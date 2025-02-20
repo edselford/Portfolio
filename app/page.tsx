@@ -11,7 +11,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { TitleScroll } from "@/components/TitleScroll";
 
-const sometype_font = Sometype_Mono({subsets: ['latin']});
+const sometype_font = Sometype_Mono({ subsets: ["latin"] });
 
 const skills = [
   "Web Development",
@@ -42,35 +42,49 @@ const skills = [
 export const metadata: Metadata = {
   title: "Edsel Mustapa - Portfolio",
   description: "My personal portfolio",
-}
+};
 
 export default function Home() {
   return (
-    <div className={`${sometype_font.className} px-5 lg:px-40 h-screen cursor-default`}>
+    <div
+      className={`${sometype_font.className} px-5 lg:px-40 h-screen cursor-default`}
+    >
       <div className="mt-5 flex flex-row justify-between">
         <div>PORTFOLIO</div>
         <div className="w-[100px] flex flex-row justify-around">
-          <a href="https://github.com/edselford" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/edselford"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faGithub} className="fa-fw" />
           </a>
-          <a href="https://www.linkedin.com/in/edsel-mustapa" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/edsel-mustapa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faLinkedin} className="fa-fw" />
           </a>
-          <a href="https://instagram.com/edselpm" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://instagram.com/edselpm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faInstagram} className="fa-fw" />
           </a>
         </div>
       </div>
       <div className="h-full flex flex-col justify-center pb-10">
-        <TitleScroll/>
+        <TitleScroll />
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center h-screen">
         <Image
-        width={500}
-        height={500}
+          width={500}
+          height={500}
           src={profile_img.src}
           alt=""
-          className="h-1/3 xl:w-1/5 aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300 rounded border border-cs-dark hover hover:border-white hover:scale-105"
+          className="h-[200px] w-[200px] aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300 rounded border border-cs-dark hover hover:border-white"
         />
         <div className="mx-10 w-[300px] text-center md:text-left mt-5 md:mt-0">
           <div>Edsel Parama Mustapa</div>
@@ -78,7 +92,8 @@ export default function Home() {
             {Math.abs(moment("2006-09-19").diff(moment.now(), "year"))} year old
           </div>
           <div>
-            I’m a passionate software developer who quickly adapts to new challenges and environments.
+            I’m a passionate software developer who quickly adapts to new
+            challenges and environments.
           </div>
         </div>
       </div>
@@ -96,7 +111,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-{/* 
+      {/* 
       <div className="flex flex-col justify-center items-center mt-52">
         <h1 className="text-center text-lg font-bold mb-10">Experience</h1>
       </div> */}
