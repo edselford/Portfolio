@@ -12,8 +12,8 @@ import moment from "moment";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-const major_font = Major_Mono_Display({ weight: "400" });
-const sometype_font = Sometype_Mono();
+const major_font = Major_Mono_Display({ weight: "400", subsets: ['latin'] });
+const sometype_font = Sometype_Mono({subsets: ['latin']});
 
 const skills = [
   "Web Development",
