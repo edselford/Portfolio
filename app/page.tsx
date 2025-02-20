@@ -1,6 +1,4 @@
-"use client";
-
-import { Major_Mono_Display, Sometype_Mono } from "next/font/google";
+import { Sometype_Mono } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -10,9 +8,9 @@ import {
 import profile_img from "@/public/1000003669.jpg";
 import moment from "moment";
 import Image from "next/image";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { Metadata } from "next";
+import { TitleScroll } from "@/components/TitleScroll";
 
-const major_font = Major_Mono_Display({ weight: "400", subsets: ['latin'] });
 const sometype_font = Sometype_Mono({subsets: ['latin']});
 
 const skills = [
@@ -41,15 +39,16 @@ const skills = [
   "Python",
 ];
 
+export const metadata: Metadata = {
+  title: "Edsel Mustapa - Portfolio",
+  description: "My personal portfolio",
+}
+
 export default function Home() {
-  const {scrollY} = useScroll()
-
-  const y = useTransform(scrollY, [0,1000], [0,1000 * 0.4])
-
   return (
     <div className={`${sometype_font.className} px-5 lg:px-40 h-screen cursor-default`}>
       <div className="mt-5 flex flex-row justify-between">
-        <div>PORTOFOLIO</div>
+        <div>PORTFOLIO</div>
         <div className="w-[100px] flex flex-row justify-around">
           <a href="https://github.com/edselford" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faGithub} className="fa-fw" />
@@ -63,17 +62,12 @@ export default function Home() {
         </div>
       </div>
       <div className="h-full flex flex-col justify-center pb-10">
-        <motion.div
-          className={`${major_font.className} font-normal lg:text-[200px] sm:text-[100px] text-[50px] text-center `}
-          style={{y}}
-        >
-          EDsel
-        </motion.div>
+        <TitleScroll/>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center h-screen">
         <Image
-        width={100}
-        height={100}
+        width={500}
+        height={500}
           src={profile_img.src}
           alt=""
           className="h-1/3 xl:w-1/5 aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300 rounded border border-cs-dark hover hover:border-white hover:scale-105"
