@@ -1,3 +1,5 @@
+"use client";
+
 import { Sometype_Mono } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,44 +12,58 @@ import moment from "moment";
 import Image from "next/image";
 import { Metadata } from "next";
 import { TitleScroll } from "@/components/TitleScroll";
+import { motion } from "framer-motion";
+import SkillTile from "@/components/SkillTile";
+import { useEffect, useState } from "react";
 
 const sometype_font = Sometype_Mono({ subsets: ["latin"] });
 
-const skills = [
-  "Web Development",
-  "Javascript",
-  "Typescript",
-  "React",
-  "Next JS",
-  "TailwindCSS",
-  "PHP",
-  "Laravel",
-  "Android Development",
-  "Android Native",
-  "Java",
-  "Kotlin",
-  "Jetpack Compose",
-  "Kotlin Multiplatform",
-  "Flutter",
-  "C#",
-  ".NET Core",
-  ".NET Framework",
-  "Winform",
-  "Electron",
-  "ASP.Net Core",
-  "Data Analyst",
-  "Python",
-];
-
-export const metadata: Metadata = {
-  title: "Edsel Mustapa - Portfolio",
-  description: "My personal portfolio",
+const skills = {
+  "Web Development": {
+    desc: "Web development is what I learned first, I've learned many languages and frameworks for the web.",
+    data: [
+      "Javascript",
+      "Typescript",
+      "React",
+      "TailwindCSS",
+      "PHP",
+      "Laravel",
+      "ASP.NET Core",
+      "NodeJS",
+      "MySQL",
+      "MongoDB",
+    ],
+  },
+  "Mobile Development": {
+    desc: "Mobile development was part of the competition so I studied it. And i've been mastering it, especially android.",
+    data: [
+      "Java",
+      "Kotlin",
+      "Jetpack Compose",
+      "Flutter",
+      "Kotlin Multiplatform",
+    ],
+  },
+  "Desktop Development": {
+    desc: "Desktop development is also part of the competition, and is scope-specific in c# with the .net framework.",
+    data: ["C#", ".NET Framework", "Entity Framework","Winform", "SQL Server"],
+  },
+  "Data Analyst": {
+    desc: "Data analyst is a new thing I learned and I still have to learn more, for the needs of competition in ASEAN.",
+    data: ["Python"],
+  },
 };
 
+// export const metadata: Metadata = {
+//   title: "Edsel Mustapa - Portfolio",
+//   description: "My personal portfolio",
+// };
+
 export default function Home() {
+  const [index, setIndex] = useState<number | null>(null);
   return (
     <div
-      className={`${sometype_font.className} px-5 lg:px-40 h-screen cursor-default`}
+      className={`${sometype_font.className} px-5 lg:px-40 h-screen cursor-default select-none`}
     >
       <div className="mt-5 flex flex-row justify-between">
         <div>PORTFOLIO</div>
@@ -100,21 +116,31 @@ export default function Home() {
 
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-center text-lg font-bold mb-10">Skills</h1>
-        <div className="flex flex-row justify-center flex-wrap">
-          {skills.map((x) => (
-            <div
-              key={x}
-              className="p-2 m-2 px-4 bg-cs-dark text-cs-light rounded-full w-fit hover:bg-green-200 hover:text-cs-dark cursor-default transition-colors"
-            >
-              {x}
-            </div>
+        <div className="2xl:flex 2xl:flex-row 2xl:justify-center 2xl:flex-wrap gap-2 grid grid-cols-1 md:grid-cols-2 max-2xl:*:!w-full">
+          {Object.entries(skills).map(([key, value], i) => (
+            <SkillTile
+              key={key}
+              title={key}
+              desc={value.desc}
+              subskill={value.data}
+              expand={index == i}
+              onClick={() => setIndex(index == i ? null : i)}
+            />
           ))}
         </div>
       </div>
-      {/* 
+
       <div className="flex flex-col justify-center items-center mt-52">
         <h1 className="text-center text-lg font-bold mb-10">Experience</h1>
-      </div> */}
+
+        <div className="flex flex-col md:flex-row justify-between w-full 2xl:w-1/2">
+          <span>2023-2024</span>
+          <div>
+            <div className="">Internship - CV. Sarana Elektrika Optima</div>
+            <div>as Web Developer</div>
+          </div>
+        </div>
+      </div>
 
       <div className="h-[100px]"></div>
     </div>

@@ -1,3 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-cs-dark: #252525;
+    --color-cs-light: #d5e1e1
+}
