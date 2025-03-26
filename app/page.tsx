@@ -10,11 +10,9 @@ import {
 import profile_img from "@/public/1000003669.jpg";
 import moment from "moment";
 import Image from "next/image";
-import { Metadata } from "next";
 import { TitleScroll } from "@/components/TitleScroll";
-import { motion } from "framer-motion";
 import SkillTile from "@/components/SkillTile";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const sometype_font = Sometype_Mono({ subsets: ["latin"] });
 
@@ -105,7 +103,7 @@ export default function Home() {
         <div className="mx-10 w-[300px] text-center md:text-left mt-5 md:mt-0">
           <div>Edsel Parama Mustapa</div>
           <div className="mb-5">
-            {Math.abs(moment("2006-09-19").diff(moment.now(), "year"))} year old
+            {Math.abs(moment("2006-09-19").diff(moment.now(), "year"))} years old
           </div>
           <div>
             I’m a passionate software developer who quickly adapts to new
